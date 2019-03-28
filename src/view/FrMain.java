@@ -5,17 +5,36 @@
  */
 package view;
 
+import common.MenuEnum;
+import controller.Navigator;
+import dto.MenuDto;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFrame;
+
 /**
  *
- * @author Administrator
+ * @author qphan
  */
-public class HomePageJFrame extends javax.swing.JFrame {
+public class FrMain extends javax.swing.JFrame {
 
     /**
      * Creates new form HomePageJFrame
      */
-    public HomePageJFrame() {
+    public FrMain() {
         initComponents();
+        
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        final Navigator navigator = new Navigator(pnMainView);
+        navigator.viewPage(new PnHomePage());
+        
+        final List<MenuDto> menus = new ArrayList<>();
+        menus.add(new MenuDto(MenuEnum.HomePage, pnHomePage, lbHomePage));
+        menus.add(new MenuDto(MenuEnum.StudentManager, pnStudentMan, lbStudentMan));
+        menus.add(new MenuDto(MenuEnum.CourseManager, pnCourseMan, lbCourseMan));
+        
+        navigator.addEventListeners(menus);
     }
 
     /**
@@ -41,7 +60,7 @@ public class HomePageJFrame extends javax.swing.JFrame {
         lbGradeMan = new javax.swing.JLabel();
         pnThongKe = new javax.swing.JPanel();
         lbThongKe = new javax.swing.JLabel();
-        pnCenter = new javax.swing.JPanel();
+        pnMainView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,9 +80,9 @@ public class HomePageJFrame extends javax.swing.JFrame {
 
         pnLeftMenu.setBackground(new java.awt.Color(0, 0, 0));
         pnLeftMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 1, 15));
-        pnLeftMenu.setLayout(new java.awt.GridLayout(6, 0, 0, 10));
+        pnLeftMenu.setLayout(new java.awt.GridLayout(8, 0, 0, 10));
 
-        pnHomePage.setBackground(new java.awt.Color(76, 175, 80));
+        pnHomePage.setBackground(new java.awt.Color(96, 100, 191));
         pnHomePage.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         pnHomePage.setPreferredSize(new java.awt.Dimension(260, 90));
         pnHomePage.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 20));
@@ -76,7 +95,7 @@ public class HomePageJFrame extends javax.swing.JFrame {
 
         pnLeftMenu.add(pnHomePage);
 
-        pnStudentMan.setBackground(new java.awt.Color(0, 153, 0));
+        pnStudentMan.setBackground(new java.awt.Color(76, 175, 80));
         pnStudentMan.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 20));
 
         lbStudentMan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -87,7 +106,7 @@ public class HomePageJFrame extends javax.swing.JFrame {
 
         pnLeftMenu.add(pnStudentMan);
 
-        pnCourseMan.setBackground(new java.awt.Color(0, 153, 0));
+        pnCourseMan.setBackground(new java.awt.Color(76, 175, 80));
         pnCourseMan.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 20));
 
         lbCourseMan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -98,7 +117,7 @@ public class HomePageJFrame extends javax.swing.JFrame {
 
         pnLeftMenu.add(pnCourseMan);
 
-        pnGradeMan.setBackground(new java.awt.Color(0, 153, 0));
+        pnGradeMan.setBackground(new java.awt.Color(76, 175, 80));
         pnGradeMan.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 20));
 
         lbGradeMan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -109,7 +128,7 @@ public class HomePageJFrame extends javax.swing.JFrame {
 
         pnLeftMenu.add(pnGradeMan);
 
-        pnThongKe.setBackground(new java.awt.Color(0, 153, 0));
+        pnThongKe.setBackground(new java.awt.Color(76, 175, 80));
         pnThongKe.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 20));
 
         lbThongKe.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -124,18 +143,18 @@ public class HomePageJFrame extends javax.swing.JFrame {
 
         getContentPane().add(pnLeft, java.awt.BorderLayout.WEST);
 
-        javax.swing.GroupLayout pnCenterLayout = new javax.swing.GroupLayout(pnCenter);
-        pnCenter.setLayout(pnCenterLayout);
-        pnCenterLayout.setHorizontalGroup(
-            pnCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnMainViewLayout = new javax.swing.GroupLayout(pnMainView);
+        pnMainView.setLayout(pnMainViewLayout);
+        pnMainViewLayout.setHorizontalGroup(
+            pnMainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 728, Short.MAX_VALUE)
         );
-        pnCenterLayout.setVerticalGroup(
-            pnCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 674, Short.MAX_VALUE)
+        pnMainViewLayout.setVerticalGroup(
+            pnMainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 874, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pnCenter, java.awt.BorderLayout.CENTER);
+        getContentPane().add(pnMainView, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,20 +176,21 @@ public class HomePageJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomePageJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomePageJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomePageJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomePageJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomePageJFrame().setVisible(true);
+                new FrMain().setVisible(true);
             }
         });
     }
@@ -183,12 +203,12 @@ public class HomePageJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lbStudentMan;
     private javax.swing.JLabel lbThongKe;
     private javax.swing.JPanel pnApp;
-    private javax.swing.JPanel pnCenter;
     private javax.swing.JPanel pnCourseMan;
     private javax.swing.JPanel pnGradeMan;
     private javax.swing.JPanel pnHomePage;
     private javax.swing.JPanel pnLeft;
     private javax.swing.JPanel pnLeftMenu;
+    private javax.swing.JPanel pnMainView;
     private javax.swing.JPanel pnStudentMan;
     private javax.swing.JPanel pnThongKe;
     // End of variables declaration//GEN-END:variables

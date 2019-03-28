@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
-
-import view.FrMain;
+package common;
 
 /**
  *
  * @author qphan
  */
-public class Main {
-    public static void main(String[] args) {
-        FrMain main = new FrMain();
-        main.setVisible(true);
-    }
+public enum MenuEnum {
+    HomePage,
+    StudentManager,
+    CourseManager,
+    ClassManager,
+    StatisticalManager;
 }
