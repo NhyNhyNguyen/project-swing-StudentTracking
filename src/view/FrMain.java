@@ -27,12 +27,13 @@ public class FrMain extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         final Navigator navigator = new Navigator(pnMainView);
-        navigator.viewPage(new PnHomePage());
+        navigator.viewPage(new PnStudentManager());
         
         final List<MenuDto> menus = new ArrayList<>();
         menus.add(new MenuDto(MenuEnum.HomePage, pnHomePage, lbHomePage));
         menus.add(new MenuDto(MenuEnum.StudentManager, pnStudentMan, lbStudentMan));
         menus.add(new MenuDto(MenuEnum.CourseManager, pnCourseMan, lbCourseMan));
+        menus.add(new MenuDto(MenuEnum.StatisticalManager, pnThongKe, lbThongKe));
         
         navigator.addEventListeners(menus);
     }

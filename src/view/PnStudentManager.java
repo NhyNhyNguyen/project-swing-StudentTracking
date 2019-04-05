@@ -21,7 +21,7 @@ public class PnStudentManager extends javax.swing.JPanel {
 
         final StudentController studentController = new StudentController(tbStudent, tfSearch, btExport, btAdd);
         studentController.loadData();
-
+        studentController.setEvents();
     }
 
     /**
@@ -91,7 +91,6 @@ public class PnStudentManager extends javax.swing.JPanel {
         pnStudentView.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 1, 1, 1));
         pnStudentView.setLayout(new java.awt.BorderLayout());
 
-        tbStudent.setAutoCreateRowSorter(true);
         tbStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
